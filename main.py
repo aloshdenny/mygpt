@@ -177,7 +177,7 @@ if __name__ == '__main__':
     print(f"Using device {device}")
 
     # Uncomment this to train the model
-    # train()
+    train()
 
     # Uncomment this for inference testing
-    inference()
+    # inference()
