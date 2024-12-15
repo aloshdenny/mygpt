@@ -16,7 +16,7 @@ async def lifespan():
     model = GPTModel(enc.n_vocab)
     m = model.to(device)
     print("Loading model...")
-    m.load_state_dict(torch.load("models/mine.pt"))
+    m.load_state_dict(torch.load("mine.pt"))
 
     yield
     # Clean up the ML models and release the resources
@@ -123,7 +123,7 @@ def train():
 
     # Try to load the old model so we can continue training it from where we left off.
     try:
-        m.load_state_dict(torch.load("models/mine.pt"))
+        m.load_state_dict(torch.load("mine.pt"))
     except FileNotFoundError:
         print("Model file not found, starting new training...")
     print("Loaded model. Beginning training...")
@@ -143,7 +143,7 @@ def train():
 
         print(loss_total/epoch)
 
-        torch.save(model.state_dict(), "models/mine.pt")
+        torch.save(model.state_dict(), "mine.pt")
     print("Done with training!")
 
 
@@ -156,7 +156,7 @@ def inference():
 
     # This is the model that was trained previously. The hyperparameters in model.py must match exactly to when it was trained, or there'll be an error.
     print("Loading model...")
-    m.load_state_dict(torch.load("models/mine.pt"))
+    m.load_state_dict(torch.load("mine.pt"))
 
     def on_generated(token):
         #print(f"{enc.decode([token])}({token.item()})", end="")
