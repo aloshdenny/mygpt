@@ -2,12 +2,11 @@
 An easily-trained baby GPT that can stand in for the real thing. Based on Andrej Karpathy's makemore, but set up to mimic a llama-cpp server.
 
 The main points of differentiation are:
- - my version is token-based (tiktoken)
+ - my version is token-based (I use tiktoken for english and sentencepiece for malayalam)
  - code to load up multiple text files as a training set
  - extra inference parameters, such as top_k, and the supression of tokens which you do not want to see (ie glitch tokens or annoyingly repeated tokens).
 
 So you can train the default tiny 15M parameter model, and use that in your projects instead of ChatGPT.
-
 
 This is not production-ready; it's a toy implementation for educational purposes.
 
@@ -15,15 +14,13 @@ This is not production-ready; it's a toy implementation for educational purposes
 
 pip install -r requirements.txt
 
-Add as many text files as you want to the "data" folder as a trianing set.
-
 ## Using it
 
-It is not very configurable at the moment -tweak the code in main.py to get it to do what you want.
+Run main.py for training a 15M English GPT, although it's not very configurable. What you're looking for is at the bottom of this readme.
 
 ### Training
 
-Uncomment "train()" in main.py. It will save checkpoints of the model parameters into the "models" folder.
+Uncomment "train()" in main.py / main_mal.py. It will save checkpoints of the model parameters into the CWD.
 
 ### Inference / text generation
 
